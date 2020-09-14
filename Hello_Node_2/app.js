@@ -1,49 +1,42 @@
+/*
+nodejs에서 기본으로 제공하는 모듈
+필요에 따라 npm install을 한 모듈
+이러한 모듈을 사용하기 위해서 require()를 이용하여 import
+*/
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+// *.js Routing 파일 import
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var homeRouter = require("./routes/home"); // routes/home,js 를 사용하겠다
+var homeRouter = require("./routes/home");
 
-// nodejs 서버 생성자
 var app = express();
 
 // view engine setup
-// __dirname : nodejs의 현재 시스템 폴더
-//    임의로 설정하지 않아도 이미 만들어져서 제공되는 변수
-// __main___
-// c:/bizwork/workspace/nodejs/Hello_Node
-// __dirname에 저장된 폴더 문자열과 views라는 문자열을 연결하여
-// 하나의 path(폴더)로 지정하라
-// /WEB-INF/...
-// c:/bizwork/workspace/nodejs/Hello_Node/views
 app.set("views", path.join(__dirname, "views"));
-// view파일 참조 views/*.pug라는 파일을 찾아서 render하라 라는 의미
 app.set("view engine", "pug");
 
+// 어떤 모듈을 사용하기 위하여 import(require)를 수행한 후
+// 서버에 모듈을 연결(연동)하는 절차가 필요하다.
+// express서버는 app.use() 라는 함수를 사용하여
+// express서버에서 import한 모듈을 사용할수 있도록 설정한다.
+// 미들웨어(middle ware) : app.use() 라는 함수를 사용하여 연결된 모듈
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// resources 폴더처럼
-// Controller를 거치지 않고 직접 핸들링할 파일들을
-// 저장하는 곳
 app.use(express.static(path.join(__dirname, "public")));
 
-// localhost:3000/* 라고 요청을 하면
-// indexRouter에게 제어권을 넘겨라
 app.use("/", indexRouter);
-
-// localhost:3000/users/* 라고 요청을 하면
-// userRouter에게 제어권을 넘겨라
 app.use("/users", usersRouter);
 
-// localhost:3000/home/* 라고 요청을 하면
-// homeRouter에게 제어권을 넘겨라
+// localhost:3000/home/* 의 요청을 처리할 router연결
+// homeRouter 모듈을 "/home/*" URL에 응답할수 있도록
+// 미들웨어로 등록하는 절차
 app.use("/home", homeRouter);
 
 // catch 404 and forward to error handler

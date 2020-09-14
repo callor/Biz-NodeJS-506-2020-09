@@ -1,0 +1,19 @@
+//- 주석(Comment)
+//- 주석때문에 pug파일이 html로 변환되는 과정에서
+//- 문제를 일으킬때가 있다.
+//- layout.pug파일은 개발자가 직접 open을 하거나 핸들링하는 경우 많지 않다
+//- 공통적으로 설정되는 header, link 등을 작성해두면
+// 다른 pug파일을 rendering할때 같이 묶어서 rendering을 수행할한다.
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    //- block content 라고 설정을 해두면
+    //- rendering 되는 pug파일에 같은이름의 block이 있어야 하고
+    //- 파일을 rendering할때 그 이름을 참조하여 한꺼번에 묶어서 연동해준다
+    //- 만약 index.pug를 rendering하라는 코드가 있으면
+    //- index.pug의 block content위치 있는 코드를 
+    //- layout.pug의 여기위치에 부착하여 하나의 html로 변환작업을 한다.    
+    block content

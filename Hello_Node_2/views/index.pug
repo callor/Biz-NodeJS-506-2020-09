@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  //- rendering을 수행할때 변수를 취급하기
+  //- tag= 변수명 : text방식으로 문자열 표시
+  //- #{변수명} : text방식으로 문자열 표시
+  //- !{변수명} : 문자열중간에 tag등이 있으면 
+  //-    tag의 속성을 반영하는
+  //-   html로 변환되어 표시
+  h1 !{title}
+  p Welcome to !{title}
+  ul
+    li 
+      a(href="/home") 홈으로
+    li
+      a(href="/home/my") myPage
+    li
+      a(href="/home/input?nation=korea") query
+    li
+      a(href="/home/input/korea") params
+
+  form(method="POST",action="/home/input")
+    input(type="text",name="m_user")
+    button 전송
+  
+
+
