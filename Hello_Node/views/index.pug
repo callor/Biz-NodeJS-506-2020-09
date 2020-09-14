@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+    form(method="POST",action="/input")
+      input(type="text",name="m_user")
+      button 전송
