@@ -3,3 +3,19 @@ extends layout
 block content
     section.container
         h2 BBS List
+        table.table.table-striped.table-hover
+            tr
+                th 작성일자
+                th 작성시각
+                th 작성자
+                th 제목
+                th 조회수
+            each vo in bbsList
+                tr
+                    td= vo.b_date
+                    td= vo.b_time
+                    td= vo.b_write
+                    td= vo.b_title
+                    td= vo.b_count
+        p
+            a(href="/bbs/write") 새로작성
