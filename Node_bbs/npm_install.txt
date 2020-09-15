@@ -1,0 +1,18 @@
+npm install cookie-parser
+npm install debug
+npm install express
+npm install http-errors
+npm install morgan
+npm install pug
+npm install mongoose
+npm install
+
+yarn add  cookie-parser
+yarn add  debug
+yarn add  express
+yarn add  http-errors
+yarn add  morgan
+yarn add  pug
+yarn add  mongoose
+yarn
+

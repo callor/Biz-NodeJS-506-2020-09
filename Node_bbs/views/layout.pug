@@ -1,0 +1,74 @@
+doctype html
+html(lang="ko")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    title= title
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+  
+    style.
+      * {
+        margin:0;
+        padding:0;
+      }
+      header {
+        margin-bottom:0;
+      }
+      nav {
+        background-color:blue;
+        color:white;
+        margin-top:0;
+      }
+      ul {
+        list-style : none;
+        display:flex;
+      }
+      li {
+        display:inline-block;
+        padding:10px 15px;
+        cursor:pointer;
+      }
+
+      li:first-child {
+        margin-left:20px;
+      }
+
+      li:nth-child(3) {
+        margin-left:auto;
+      }
+
+      li:hover {
+        background-color:#ddd;
+        color:blue;
+      }
+
+    script.
+      $(function(){
+        // nav 내부의 ul 내부의 li tag가 클릭되면
+        $("nav ul li").click(function(){
+          // 클릭된 li의 보이는 문자열을 추출하여 text 변수에 담고
+          let text = $(this).text()
+          // 그 문자열이 '자유게시판' 이면
+          if(text === '자유게시판') {
+            // bbs/list로 URL 점프를 하라
+            document.location.href = "/bbs/list"
+          }
+        })
+      })
+
+
+  body
+    header.jumbotron.text-center.bg-success.text-white
+      h1 BBS 2020
+      p BBS 2020 with NodeJS    
+
+    nav
+      ul
+        li Home
+        li 자유게시판
+        li 회원가입
+        li 로그인
+    block content
