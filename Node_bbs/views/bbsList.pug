@@ -5,17 +5,23 @@ block content
         h2 BBS List
         table.table.table-striped.table-hover
             tr
+                th No
                 th 작성일자
                 th 작성시각
                 th 작성자
                 th 제목
                 th 조회수
-            each vo in bbsList
-                tr
+            each vo,index in bbsList
+                //- U(Update) D(Delete) 기능을 구현하기 위해서
+                //- PK키 값을 tr tag 에 data-id라는 속성값으로 추가하여
+                //- 참조할수 있도록 미리 코드를 만들어둔다
+                tr(data-id= vo._id)
+                    td #{ index + 1 }
                     td= vo.b_date
                     td= vo.b_time
                     td= vo.b_write
-                    td= vo.b_title
+                    td
+                        a(href="/bbs/view/" + vo._id)= vo.b_title
                     td= vo.b_count
         p
             a(href="/bbs/write") 새로작성
