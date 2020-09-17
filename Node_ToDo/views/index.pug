@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  link(rel="stylesheet",href="/stylesheets/todo_main.css")
+  script(src="/javascripts/todo_main.js")
+
+  section.todo_main
+    h1(id="main_title",onclick="main_title_click()") MY TODO LIST
+    form(method="POST")
+      input(type="text",name="todo",id="todo",placeholder="하고싶은일")
+      //- button type을 button으로 바꾸면(기본값:sumbit) 
+      //- form내부에 있는 버튼을 클릭해도 input내용이 서버로 전송되지 않는다
+      //- button 클릭을 스크립트로 이벤트 처리를하여 입력값에 대한 유효성검사를
+      //- 하기위한 선행 방법 
+      //- <button type="button" onclick="btn_click()">저장</button>
+      button(type="button",id="btn-save") 저장
+
+    article.todo_list
+      ul
+        li 온라인 수업
+        li TodoList 만들기
+        li 오늘의 과제
+        li 내일은 금요일
+        li 다음주면 땡이길 바란다

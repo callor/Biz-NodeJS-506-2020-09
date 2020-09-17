@@ -1,0 +1,55 @@
+section.todo_main {
+  border: 1px solid rgb(92, 214, 92);
+  width: 50%;
+  margin: 30px auto;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.7);
+}
+
+section.todo_main h1 {
+  margin: 0 auto;
+  background-color: green;
+  text-align: center;
+  padding: 2rem;
+}
+
+section.todo_main form {
+  width: 95%;
+  margin: 0px auto;
+  display: flex;
+}
+
+section.todo_main form input {
+  display: inline-block;
+  flex: 5;
+  margin: 3px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+section.todo_main form button {
+  flex: 1;
+  background-color: blue;
+  color: white;
+  padding: 5px 12px;
+  margin: 3px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+section.todo_main form button:hover {
+  box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.7);
+}
+
+article.todo_list {
+  border: 1px solid #aaa;
+  width: 95%;
+  margin: 5px auto;
+  border-radius: 5px;
+}
+
+article.todo_list ul li {
+  width: 93%;
+  padding: 8px;
+  border-bottom: 1px solid green;
+}
