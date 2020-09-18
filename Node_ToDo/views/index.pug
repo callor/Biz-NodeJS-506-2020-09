@@ -2,10 +2,30 @@ extends layout
 
 block content
   link(rel="stylesheet",href="/stylesheets/todo_main.css")
+  script.
+    document.addEventListener("DOMContentLoaded", function () {
+
+      // 서버에서 JSON 형태로 보낸 데이터를
+      // pug내의 front script에서 가져와서 사용하기 위한 방법
+      
+      // const todo_data = : 문법구조에 문제가 있어서 이후의
+      // 모든 script가 멈춰버린다.
+      // 최초에 index.pug파일이 화면에 그려질때 아직 서버로 부터 todo_data를
+      // 받지 않은 상태에서 발생하는 오류를 방지하기 위해
+      // 데이터를 백틱(``) 으로 감싸준다.
+      // 변수는 !{변수} 형태로 사용한다.
+      const todo_data = `!{todo_data}`
+      console.log(todo_data)
+    })
   script(src="/javascripts/todo_main.js")
 
   section.todo_main
     h1(id="main_title",onclick="main_title_click()") MY TODO LIST
+    //- 표준적인 코드는 form에 method와 action을 지정하여
+    //- 정확히 서버의 어떤 URL로 데이터를 전송할 것인지 명시를 한다
+    //- action이 없이 form을 사용하는 것을 계속 연습중이다
+    //- action을 지정하면 hard coding화 되어, 프로젝트상의 어떤 변경이 있으면
+    //- action부분도 변경을 해주어야 하는 코드가 된다.
     form(method="POST")
       input(type="text",name="todo",id="todo",placeholder="하고싶은일")
       //- button type을 button으로 바꾸면(기본값:sumbit) 
@@ -13,6 +33,10 @@ block content
       //- button 클릭을 스크립트로 이벤트 처리를하여 입력값에 대한 유효성검사를
       //- 하기위한 선행 방법 
       //- <button type="button" onclick="btn_click()">저장</button>
+      //- 저장버튼을 클릭했을때 하고싶은일(input box)에 내용을 입력하지 않았으면
+      //- 사용자에게 경고메시지를 보여주고 내용을 입력하도록 하는 "유효성검사"를
+      //- 수행하기 위해 button의 type="button" 으로 설정하고
+      //- js 코드에서 클릭이벤트를 통해 유효성 검사를 수행했다.
       button(type="button",id="btn-save") 저장
 
     article.todo_list

@@ -64,17 +64,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // querySelector()를 사용해서 조회를 할수 있다
     let todo_input = document.querySelector("input");
 
+    // input box를 선택하는 좋은 방법
+    // 확실하게 원하는 input box가 select되도록 설정하는 방법
     todo_input = document.querySelector(
       "section.todo_main form input[name='todo']"
     );
 
+    // 객체.value : input box일경우에만 사용할수 있는 속성
+    //     input box에 사용자가 문자열(뭔가)를 입력하면
+    //     입력한 내용이 value 담겨있게 된다.
+    // 객체.value 값을 todo_value라는 변수에 옮겨 담기
     let todo_value = todo_input.value;
+    // if(todo_input.value === "")
     if (todo_value === "") {
       alert("할일은 반드시 입력하세요");
+      // input tag를 모두 읽어서 배열로 처리하는 방법
       document.querySelectorAll("input")[0].focus();
+      // 정확히 필요한 input을 select 하여 처리하는 방법
+      document
+        .querySelector("section.todo_main form input[name='todo']")
+        .focus();
       return false;
     }
+    // 정상적으로 어떤 문자열이라도 입력을 수행했으면
     if (confirm("저장할까요?")) {
+      // 화면에 form 1개 뿐이기 때문에 Selector를 사용할수 있다
+      // 만약 화면에 여러개의 form이 있다면 가급적 form에도 id를 부여하여
+      // select하는 것이 좋다.
+      // 이제 데이터가 정상적으로 입력되었으니 서버로 전송하라(submit())
       document.querySelector("form").submit();
     }
   });
