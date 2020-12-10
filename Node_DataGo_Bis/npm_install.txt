@@ -1,0 +1,6 @@
+npm install pug
+npm install express
+npm install mongoose
+npm install request
+npm install node-schedule
+npm install

@@ -59,3 +59,6 @@ typings/
 .env
 .metadata/
 RemoteSystemsTempFiles/
+
+# 보안키 등록금지
+Data.go.kr.js
