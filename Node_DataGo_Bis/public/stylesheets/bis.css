@@ -1,0 +1,39 @@
+table.bis {
+  border-collapse: collapse;
+  border-spacing: none;
+  width: 98%;
+  table-layout: fixed;
+  border: 1px solid #aaa;
+  margin: 2px auto;
+}
+
+table.bis th,
+table.bis td {
+  padding: 8px 12px;
+  text-align: left;
+  width: 10px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+table.bis th {
+  background-color: aqua;
+}
+
+table.bis tr:nth-child(odd) {
+  background-color: #eee;
+}
+table.bis tr:nth-child(even) {
+  background-color: #ccc;
+}
+
+table.bis td:hover {
+  text-overflow: initial;
+  overflow: visible;
+  cursor: pointer;
+}
+table.bis tr:hover {
+  background-color: #ddd;
+}

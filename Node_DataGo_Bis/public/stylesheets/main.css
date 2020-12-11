@@ -60,4 +60,37 @@ a {
 section.main {
   display: grid;
   align-items: start;
+  width: 80%;
+  margin: 20px auto;
+}
+
+section.station-list,
+section.busstop-list {
+  border: 1px;
+  margin: 5px 2px;
+}
+/* 
+미디어 쿼리 : 화면사이즈에 따라 레이아웃이 
+달라지는 효과를 내기 위한 css 함수  
+screen and : 화면의 모양이
+(min-width:680px) : 가로폭(width)사이즈가 680px이상이 되면
+*/
+@media screen and (min-width: 680px) {
+  section.main {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 6px;
+  }
+}
+
+/* 화면의 width가 680px 이하가 되면 */
+@media screen and (max-width: 680px) {
+  header h1 {
+    font-size: 20px;
+  }
+  header p {
+    width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }

@@ -1,8 +1,9 @@
 extends layout
 
 block content
+    script(src="/javascripts/bis.js")
     section.station-list
-        table
+        table.bis.station-list
             thead
                 tr 
                     th 정류장명
@@ -11,8 +12,22 @@ block content
                     th 정류장 ID
             tbody
                 each station,index in station_list
-                    tr
+                    tr(data-id= station.BUSSTOP_ID)
                         td= station.BUSSTOP_NAME
                         td= station.NEXT_BUSSTOP
                         td= station.STATION_NUM
                         td= station.BUSSTOP_ID
+    section.busstop-list
+        table.bis.busstop-list
+            thead
+                tr
+                    th 노선번호
+                    th 현재위치
+                    th 도착예정
+                    th 남은정류장
+            tbody
+                tr
+                    td(colspan="4") 정류장을 클릭하세요 ...
+
+
+

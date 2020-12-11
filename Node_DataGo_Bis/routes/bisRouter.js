@@ -1,7 +1,12 @@
 import express from "express";
 const router = express.Router();
+import request from "request";
 
 import gjDataVO from "../models/GjStation.js";
+import {
+  GJ_BUS_ARRIVE_URL,
+  DATA_GO_SEVICE_KEY,
+} from "../modules/Data.go.kr.js";
 
 router.get("/", (req, res) => {
   console.log("bis root req");
@@ -29,6 +34,27 @@ router.get("/station", (req, res) => {
     .exec((err, data) => {
       res.render("bis_view", { station_list: data });
     });
+});
+
+// 요청받은 busstop_id 값에 해당하는 버스도착정보를
+// 공공DB에서 조회하여 JSON으로 보내기
+router.get("/busstop/:busstop_id", async (req, res) => {
+  const busstop_id = req.params.busstop_id;
+  let queryString = GJ_BUS_ARRIVE_URL;
+  queryString += `?serviceKey=${DATA_GO_SEVICE_KEY}`;
+  queryString += `&BUSSTOP_ID=${busstop_id}`;
+  const reqOPtion = {
+    url: queryString,
+    method: "GET",
+  };
+
+  await request(reqOPtion, (err, response, body) => {
+    if (err) console.log(err);
+    res.json(JSON.parse(body));
+  });
+
+  // { busstop_id: busstop_id}
+  // res.json({ busstop_id });
 });
 
 export default router;
