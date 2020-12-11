@@ -1,14 +1,18 @@
-table
-    thead
-        tr 
-            th 정류장명
-            th 다음 정류장
-            th 정류장 번호
-            th 정류장 ID
-    tbody
-        each station,index in station_list
-            tr
-                td= station.BUSSTOP_NAME
-                td= station.NEXT_BUSSTOP
-                td= station.STATION_NUM
-                td= station.BUSSTOP_ID
+extends layout
+
+block content
+    section.station-list
+        table
+            thead
+                tr 
+                    th 정류장명
+                    th 다음 정류장
+                    th 정류장 번호
+                    th 정류장 ID
+            tbody
+                each station,index in station_list
+                    tr
+                        td= station.BUSSTOP_NAME
+                        td= station.NEXT_BUSSTOP
+                        td= station.STATION_NUM
+                        td= station.BUSSTOP_ID

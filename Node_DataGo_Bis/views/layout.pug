@@ -1,7 +1,17 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title 광주버스도착정보
+    meta(charset='UTF-8')
+    meta(name="viewport", content="width=device-width, initial-scal=1.0")
+    link(rel='stylesheet', href='/stylesheets/main.css')
   body
-    block content
+    header
+      h1 광주광역시 버스도착정보 2020
+      p 대한민국 공공DB를 활용한 광주광역시 버스도착정보 시스템
+    section.nav
+      form(action="/bis/station")
+        input.bis-input(type='text',name='station',
+        | placeholder='정류장 이름 입력후 Enter...')
+    section.main
+      block content
